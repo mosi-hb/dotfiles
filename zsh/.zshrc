@@ -108,7 +108,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export EDITOR=nano
+export EDITOR=nvim
 export PATH=$PATH:~/bin
 
 . "$HOME/.atuin/bin/env"
