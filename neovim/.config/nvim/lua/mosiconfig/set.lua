@@ -13,3 +13,7 @@ vim.opt.wrap = false
 vim.opt.incsearch = true -- incremental search
 
 vim.opt.termguicolors = true
+
+-- nvim tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
