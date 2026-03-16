@@ -207,17 +207,17 @@ exec_always xinput set-prop "PNP0C50:0d 04CA:2642 Touchpad" "libinput Natural Sc
 exec_always --no-startup-id synclient VertScrollDelta=-111
 
 #Wallpaper
-exec_always feh --bg-scale $HOME/Desktop/Mosi-Dotfiles/wallpapers/wallpaper.png
-
+# exec_always feh --bg-scale $HOME/Desktop/Mosi-Dotfiles/wallpapers/wallpaper.png
+exec_always feh --bg-scale $HOME/dotfiles/wallpapers/Wano.png
 #Layout
-exec_always --no-startup-id python3 /home/mosi/i3-alternating-layout/alternating_layouts.py
-
+# exec_always --no-startup-id python3 /home/mosi/i3-alternating-layout/alternating_layouts.py
+exec_always --no-startup-id python3 $HOME/dotfiles/i3-alternating-layout/alternating_layouts.py
 #polybar
 exec_always --no-startup-id killall -q
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #picom
-exec_always --no-startup-id sh -c 'sleep 5 && picom --config ~/.config/picom/picom.conf' 
+exec_always --no-startup-id sh -c 'sleep 5 && picom --config $HOME/.config/picom/picom.conf' 
 
 #KEYBOARD LAYOUT BUG FIX
 exec_always --no-startup-id ibus-daemon -drx
