@@ -3,19 +3,84 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/nvim-cmp",
+      "j-hui/fidget.nvim",
+      "qvalentin/helm-ls.nvim" 
     },
     config = function()
+      -- Auto Completion Setup
+      local cmp_lsp = require("cmp_nvim_lsp")
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        cmp_lsp.default_capabilities()
+      )
+      
+      local cmp = require('cmp')
+      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+      -- Fidget Setup
+      require("fidget").setup({})
+    
       -- Mason Setup
       require("mason").setup() 
+
+      -- Helm LS Setup
+      require("helm-ls").setup()
 
       -- Mason LSP Config Setup
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "ngserver",
-          "tsserver",
+          "ts_ls",
+          "angularls",
           "ruff",
           "lua_ls"
-        }
+        },
+        lua_ls = function()
+          require('lspconfig').lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                runtime = {
+                  version = 'LuaJIT'
+                },
+                diagnostics = {
+                  globals = { 'vim', 'love' },
+                },
+                workspace = {
+                  library = {
+                    vim.env.VIMRUNTIME,
+                  }
+                }
+              }
+            }
+          })
+        end
       }) 
+
+    -- Snippet setup
+    cmp.setup({
+      sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'buffer',  keyword_length = 3 },
+      },
+      mapping = cmp.mapping.preset.insert({
+        -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        -- ['<C-Space>'] = cmp.mapping.complete(),
+      }),
+      snippet = {
+        expand = function(args)
+          -- require('luasnip').lsp_expand(args.body)
+        end,
+      },
+    })
     end
 }

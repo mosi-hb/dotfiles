@@ -10,17 +10,27 @@ return {
     local ts = require("nvim-treesitter")
     local languages = {
       "bash",
-      "css",
-      "dockerfile",
-      "html",
-      "javascript",
       "json",
       "lua",
-      "python",
-      "typescript",
       "vim",
+
+      -- Python 
+      "python",
+
+      -- Angular 
+      "html",
+      "css",
+      "javascript",
+      "typescript",
+      "angular",
+
+      -- Docker 
+      "dockerfile",
+
+      -- Kubernetes/Helm
+      "go",
       "yaml",
-      "dockerfile"
+      "helm"
     }
 
     ts.setup({})
