@@ -116,3 +116,4 @@ export PATH=$PATH:~/bin
 eval "$(atuin init zsh)"
 alias tmx="tmuxinator"
 alias zel="zellij --layout .zellij.kdl"
+bindkey '^ ' autosuggest-accept 
