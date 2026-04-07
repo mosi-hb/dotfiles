@@ -39,7 +39,8 @@ return {
           "ts_ls",
           "angularls",
           "ruff",
-          "lua_ls"
+          "lua_ls",
+          "cssls"
         },
         lua_ls = function()
           require('lspconfig').lua_ls.setup({

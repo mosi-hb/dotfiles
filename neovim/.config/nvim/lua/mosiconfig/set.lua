@@ -1,6 +1,9 @@
 -- color sheme
 vim.cmd.colorscheme("onedark")
 
+-- use system keyboard for yank
+vim.opt.clipboard = 'unnamedplus'
+
 -- set tab size to 2 spaces
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
