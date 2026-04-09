@@ -20,3 +20,6 @@ vim.opt.termguicolors = true
 -- nvim tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- line numbers
+vim.wo.number = true

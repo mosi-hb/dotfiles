@@ -1,68 +1,69 @@
-return { 
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/nvim-cmp",
-      "j-hui/fidget.nvim",
-      "qvalentin/helm-ls.nvim" 
-    },
-    config = function()
-      -- Auto Completion Setup
-      local cmp_lsp = require("cmp_nvim_lsp")
-      local capabilities = vim.tbl_deep_extend(
-        "force",
-        {},
-        vim.lsp.protocol.make_client_capabilities(),
-        cmp_lsp.default_capabilities()
-      )
-      
-      local cmp = require('cmp')
-      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+return {
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    "j-hui/fidget.nvim",
+    "qvalentin/helm-ls.nvim"
+  },
+  config = function()
+    -- Auto Completion Setup
+    local cmp_lsp = require("cmp_nvim_lsp")
+    local capabilities = vim.tbl_deep_extend(
+      "force",
+      {},
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_lsp.default_capabilities()
+    )
 
-      -- Fidget Setup
-      require("fidget").setup({})
-    
-      -- Mason Setup
-      require("mason").setup() 
+    local cmp = require('cmp')
+    local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-      -- Helm LS Setup
-      require("helm-ls").setup()
+    -- Fidget Setup
+    require("fidget").setup({})
 
-      -- Mason LSP Config Setup
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "ts_ls",
-          "angularls",
-          "ruff",
-          "lua_ls",
-          "cssls"
-        },
-        lua_ls = function()
-          require('lspconfig').lua_ls.setup({
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                runtime = {
-                  version = 'LuaJIT'
-                },
-                diagnostics = {
-                  globals = { 'vim', 'love' },
-                },
-                workspace = {
-                  library = {
-                    vim.env.VIMRUNTIME,
-                  }
+    -- Mason Setup
+    require("mason").setup()
+
+    -- Helm LS Setup
+    require("helm-ls").setup()
+
+    -- Mason LSP Config Setup
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "ts_ls",
+        "angularls",
+        "ruff",
+        "lua_ls",
+        "cssls",
+        "prettierd"
+      },
+      lua_ls = function()
+        require('lspconfig').lua_ls.setup({
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              runtime = {
+                version = 'LuaJIT'
+              },
+              diagnostics = {
+                globals = { 'vim', 'love' },
+              },
+              workspace = {
+                library = {
+                  vim.env.VIMRUNTIME,
                 }
               }
             }
-          })
-        end
-      }) 
+          }
+        })
+      end
+    })
 
     -- Snippet setup
     cmp.setup({
@@ -74,7 +75,7 @@ return {
       mapping = cmp.mapping.preset.insert({
         -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
         -- ['<C-Space>'] = cmp.mapping.complete(),
       }),
       snippet = {
@@ -83,5 +84,5 @@ return {
         end,
       },
     })
-    end
+  end
 }
