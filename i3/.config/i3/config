@@ -221,6 +221,8 @@ exec_always --no-startup-id sh -c 'sleep 5 && picom --config $HOME/.config/picom
 
 #KEYBOARD LAYOUT BUG FIX
 exec_always --no-startup-id ibus-daemon -drx
+#Binds esc to Caps Lock
+exec_always --no-startup-id setxkbmap -option caps:escape
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
