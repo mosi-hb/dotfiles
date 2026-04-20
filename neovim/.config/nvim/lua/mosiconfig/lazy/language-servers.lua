@@ -1,18 +1,29 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    --Mason
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+
+    --LSP
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/nvim-cmp",
+
+    --Helm language server
+    "qvalentin/helm-ls.nvim",
+
+    --Notifications
     "j-hui/fidget.nvim",
-    "qvalentin/helm-ls.nvim"
   },
   config = function()
-    -- Auto Completion Setup
+    -- Mason Setup
+    require("mason").setup()
+
+    -- Mason LSP/Formatting Tools/Auto Completion Setup
     local cmp_lsp = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -20,20 +31,16 @@ return {
       vim.lsp.protocol.make_client_capabilities(),
       cmp_lsp.default_capabilities()
     )
-
     local cmp = require('cmp')
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-    -- Fidget Setup
-    require("fidget").setup({})
+    require("mason-tool-installer").setup({
+      ensure_installed = {
+        'prettier',
+        'ruff'
+      },
+    })
 
-    -- Mason Setup
-    require("mason").setup()
-
-    -- Helm LS Setup
-    require("helm-ls").setup()
-
-    -- Mason LSP Config Setup
     require("mason-lspconfig").setup({
       ensure_installed = {
         "ts_ls",
@@ -41,7 +48,7 @@ return {
         "ruff",
         "lua_ls",
         "cssls",
-        "prettierd"
+        "tailwindcss"
       },
       lua_ls = function()
         require('lspconfig').lua_ls.setup({
@@ -84,5 +91,11 @@ return {
         end,
       },
     })
+
+    -- Helm LS Setup
+    require("helm-ls").setup()
+
+    -- Fidget Setup
+    require("fidget").setup({})
   end
 }

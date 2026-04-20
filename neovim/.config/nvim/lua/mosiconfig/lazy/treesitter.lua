@@ -14,17 +14,16 @@ return {
       "lua",
       "vim",
 
-      -- Python 
+      -- Python
       "python",
 
-      -- Angular 
+      -- Angular
       "html",
       "css",
       "javascript",
       "typescript",
-      "angular",
 
-      -- Docker 
+      -- Docker
       "dockerfile",
 
       -- Kubernetes/Helm

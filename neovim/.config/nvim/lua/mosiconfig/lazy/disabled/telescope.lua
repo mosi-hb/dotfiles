@@ -1,3 +1,5 @@
+-- This is a file finder, i replaced this with NvimTree
+
 return {
   {
     'nvim-telescope/telescope.nvim', version = '*',

@@ -5,18 +5,18 @@ return {
     require("conform").setup({
       formatters_by_ft = {
         python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-        html = { "prettierd" },
-        htmlangular = { "prettierd" },
-        css = { "prettierd" },
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
+        html = { "prettier" },
+        htmlangular = { "prettier" },
+        css = { "prettier" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        yaml = { "prettier" },
+        json = { "prettier" }
       },
-
       --Format on save
       format_on_save = {
         lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
+        timeout_ms = 3000,
       },
     })
   end,
