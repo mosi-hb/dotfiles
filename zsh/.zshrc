@@ -114,6 +114,12 @@ export PATH=$PATH:~/bin
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
 alias tmx="tmuxinator"
+
 alias zel="zellij --layout .zellij.kdl"
+
 bindkey '^ ' autosuggest-accept 
+
+source <(konf-go shellwrapper zsh)
+konf --silent set -
