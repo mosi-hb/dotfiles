@@ -14,10 +14,10 @@ return {
         json = { "prettier" }
       },
       --Format on save
-      format_on_save = {
-        lsp_fallback = true,
-        timeout_ms = 3000,
-      },
+      -- format_on_save = {
+      --   lsp_fallback = true,
+      --   timeout_ms = 3000,
+      -- },
     })
   end,
 }

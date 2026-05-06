@@ -23,14 +23,22 @@ vim.keymap.set('x', "<leader>B", "<Plug>(ToBase64)")
 local function nvimtree_toggle_or_focus()
   local api = require("nvim-tree.api")
 
-  -- If the tree is visible, just focus it and start navigating.
-  if api.tree.is_visible() then
+  if vim.bo.filetype == "NvimTree" then
+    -- If we are in the tree, unfocus
+    vim.cmd("wincmd p")
+  elseif api.tree.is_visible() then
+    -- If tree is visible but we are not in it, focus it
     api.tree.focus()
   else
-    -- If closed, open and focus.
+    -- If closed, open and focus
     api.tree.open()
     api.tree.focus()
   end
 end
 
 vim.keymap.set("n", "<C-b>", nvimtree_toggle_or_focus, { desc = "Toggle or focus NvimTree" })
+
+-- Conform Formatting
+vim.keymap.set("n", "<leader>f", function()
+  require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format file" })
