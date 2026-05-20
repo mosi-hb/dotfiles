@@ -1,10 +1,10 @@
--- color sheme
+-- Color scheme
 vim.cmd.colorscheme("onedark")
 
--- use system keyboard for yank
+-- Use system keyboard for yank
 vim.opt.clipboard = 'unnamedplus'
 
--- set tab size to 2 spaces
+-- Indent configuration
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -17,9 +17,12 @@ vim.opt.incsearch = true -- incremental search
 
 vim.opt.termguicolors = true
 
--- nvim tree
+-- Nvim tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- line numbers
-vim.wo.number = true
+-- Line numbers
+vim.wo.relativenumber = true
+
+-- Scrolling
+vim.o.scrolloff = 8

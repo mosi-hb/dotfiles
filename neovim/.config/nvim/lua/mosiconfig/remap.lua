@@ -36,9 +36,13 @@ local function nvimtree_toggle_or_focus()
   end
 end
 
-vim.keymap.set("n", "<C-b>", nvimtree_toggle_or_focus, { desc = "Toggle or focus NvimTree" })
+vim.keymap.set("n", "<A-b>", nvimtree_toggle_or_focus, { desc = "Toggle or focus NvimTree" })
 
--- Conform Formatting
-vim.keymap.set("n", "<leader>f", function()
+-- Conform Formatting (Formats selection)
+vim.keymap.set("v", "<leader>f", function()
   require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file" })
+
+-- Scrolling with NeoScroll (https://github.com/karb94/neoscroll.nvim#examples)
+vim.keymap.set({"n", "v", "x"}, "<A-k>", function() require("neoscroll").scroll(-0.4, { move_cursor=false; duration = 250 }) end)
+vim.keymap.set({"n", "v", "x"}, "<A-j>", function() require("neoscroll").scroll(0.4, { move_cursor=false; duration = 250 }) end)
