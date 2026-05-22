@@ -1,28 +1,33 @@
+local o = vim.opt
+local g = vim.g
+local cmd = vim.cmd
+
 -- Color scheme
-vim.cmd.colorscheme("onedark")
+cmd.colorscheme("onedark")
 
 -- Use system keyboard for yank
-vim.opt.clipboard = 'unnamedplus'
+o.clipboard = 'unnamedplus'
 
 -- Indent configuration
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.smartindent = false
+o.tabstop = 2
+o.softtabstop = 2
+o.shiftwidth = 2
+o.expandtab = true
+o.smartindent = false
+o.wrap = false
+o.incsearch = true -- Incremental search
+o.ignorecase = true -- Case insensitive search (See below)
+o.smartcase = true -- ^ Unless there is a capital letter
 
-vim.opt.wrap = false
-
-vim.opt.incsearch = true -- incremental search
-
-vim.opt.termguicolors = true
+o.termguicolors = true
 
 -- Nvim tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 
 -- Line numbers
-vim.wo.relativenumber = true
+o.relativenumber = true
+o.number = true -- Show current line number
 
 -- Scrolling
-vim.o.scrolloff = 8
+o.scrolloff = 8
