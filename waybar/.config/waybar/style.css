@@ -47,6 +47,12 @@
   border: 1px solid alpha(@white, 0.7);
 }
 
+#workspaces button:hover {
+  background: @grey;
+  color: @black;
+  box-shadow: none;
+}
+
 #workspaces button.focused {
   background-color: @white;
   color: @black;
