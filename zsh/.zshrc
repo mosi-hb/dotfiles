@@ -103,22 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# ZSH Plugin configurations
-# -Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# -Neovim
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-# -Atuin
-eval "$(atuin init zsh)"
-. "$HOME/.atuin/bin/env" 
-
-# -Konf-go
-source <(konf-go shellwrapper zsh)
-konf --silent set -
-
 # Env variables
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
@@ -131,3 +115,21 @@ alias zel="zellij --layout .zellij.kdl"
 # Keybinds
 bindkey '^ ' autosuggest-accept 
 
+
+. "$HOME/.local/bin/env"
+
+# ZSH Plugin configurations
+# -Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# -NVM
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# -Atuin
+eval "$(atuin init zsh)"
+
+# -Konf-go
+export PATH="$HOME/go/bin:$PATH" # Makes the GO installed applications executable in PATH
+source <(konf-go shellwrapper zsh)
+konf set --silent -

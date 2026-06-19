@@ -1,0 +1,77 @@
+@define-color black rgba(13, 17, 23, 1);
+@define-color dark-grey rgba(72, 79, 88, 1);
+@define-color grey rgba(139, 148, 158, 1);
+@define-color white rgba(201, 209, 217, 1);
+@define-color red rgba(255, 123, 114, 1);
+@define-color green rgba(63, 185, 80, 1);
+@define-color cyan rgba(118, 227, 234, 1);
+@define-color blue rgba(88, 166, 255, 1);
+@define-color magenta rgba(137, 87, 229, 1);
+@define-color light-pink rgba(210, 168, 255, 1);
+
+* {
+	border: none;
+	border-radius: 0;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 14px;
+  font-weight: bold;
+
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#waybar {
+  background-color: transparent;
+  color: @white;
+}
+
+/*
+* Workspaces
+*/
+
+#workspaces {
+  background-color: @black;
+  border-radius: 100px;
+  border: 1px solid alpha(@white, 0.6);
+}
+
+#workspaces button {
+  background-color: @grey;
+  color: @black;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 1000px;
+  margin: 5px 5px;
+  transition: all 250ms ease-out;
+  border: 1px solid alpha(@white, 0.7);
+}
+
+#workspaces button.focused {
+  background-color: @white;
+  color: @black;
+  min-width: 40px;
+  border: none;
+}
+
+/*
+* Clock
+*/
+
+#clock {
+  background-color: @black;
+  border-radius: 100px;
+  border: 1px solid alpha(@white, 0.6);
+  padding: 5px 10px;
+}
+
+/*
+* Volume
+*/
+
+#pulseaudio {
+  background-color: @black;
+  border-radius: 100px;
+  border: 1px solid alpha(@white, 0.6);
+  padding: 5px 10px;
+}

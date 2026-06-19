@@ -3,7 +3,7 @@ local g = vim.g
 local cmd = vim.cmd
 
 -- Color scheme
-cmd.colorscheme("onedark")
+cmd.colorscheme("github_dark_default")
 
 -- Use system keyboard for yank
 o.clipboard = 'unnamedplus'

@@ -1,0 +1,13 @@
+{
+    "position": "top",
+    "layer": "bottom",
+    "margin-top": 3,
+    "margin-right": 3,
+    "margin-left": 3,
+
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["battery", "pulseaudio"],
+
+    "include": [ "~/.config/waybar/modules.jsonc" ]
+}
