@@ -156,6 +156,24 @@ sudo apt install -y sway
 echo "Sway window manager installed!"
 
 #------------------------------------------------#
+#- Swaylock-fancy -------------------------------#
+#------------------------------------------------#
+git clone https://github.com/Big-B/swaylock-fancy.git
+cd swaylock-fancy
+sudo make install
+cd ..
+rm -rf swaylock-fancy
+
+echo "Sway lock screen installed!"
+
+#------------------------------------------------#
+#- Sway Idle ------------------------------------#
+#------------------------------------------------#
+sudo apt install -y swayidle
+
+echo "Sway idle installed!"
+
+#------------------------------------------------#
 #- Kitty ----------------------------------------#
 #------------------------------------------------#
 sudo apt install -y kitty
