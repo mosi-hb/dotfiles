@@ -1,4 +1,5 @@
--- This is a file finder, i replaced this with NvimTree
+-- This is a file finder, i replaced this with NvimTree but is still needed
+-- for the dashboard plugin
 
 return {
   {
