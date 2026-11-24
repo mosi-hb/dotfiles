@@ -192,7 +192,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim - | wl-copy
+    bindsym Print exec grim | wl-copy
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy  
     # Lock screen
     bindsym Ctrl+$mod+l exec swaylock -f -c 000000
@@ -237,3 +237,8 @@ exec_always cd $scripts && uv run alternating_layouts.py
 # Wallpaper configuration:
 #
 exec $scripts/random_wallpaper.sh
+
+#
+# Cursor theme:
+#
+seat seat0 xcursor_theme Yaru 18
